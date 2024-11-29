@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
 void count_values_more_t(const int* arr, int size, int& count, int t) {
-    count = 0; // Инициализация счётчика
+    count = 0;
     for (int i = 0; i < size; i++) {
         if (arr[i] > t)
         {
@@ -20,18 +20,19 @@ void print_array(const int* arr, int size) {
 void find_min_arr(const int* arrA, const int* arrB, int size, int t) {
     int countA = 0, countB = 0;
 
-    // Считаем количество элементов > t
     count_values_more_t(arrA, size, countA, t);
     count_values_more_t(arrB, size, countB, t);
 
-    // Сравниваем и выводим массив с меньшим количеством
     if (countA < countB) {
         std::cout << "Массив A имеет меньше элементов больших " << t << ":" << std::endl;
         print_array(arrA, size);
     }
-    else {
+    else if (countA > countB){
         std::cout << "Массив B имеет меньше элементов больших " << t << ":" << std::endl;
         print_array(arrB, size);
+    }
+    else {
+        std::cout << "Ошибка" << std::endl;
     }
 }
 
@@ -58,7 +59,6 @@ int main() {
     std::cout << "Введите значение t:" << std::endl;
     std::cin >> t;
 
-    // Поиск массива с наибольшей суммой
     find_min_arr(A, B, N, t);
 
     system("pause");

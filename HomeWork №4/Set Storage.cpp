@@ -22,6 +22,23 @@ std::set<int> numbers_in_both_sets(std::set<int> SET1, std::set<int> SET2, int s
 	return FSET;
 }
 
+void values_more_t(std::set<int> setA, std::set<int> setB, int n, int t){
+	std::set<int> IntersectionSet = numbers_in_both_sets(setA, setB, n);
+	std::set<int> FSET{};
+	for (const int n : IntersectionSet)
+	{
+		if (n > t)
+		{
+			FSET.insert(n);
+		}
+	}
+
+	std::cout << "Значения, которые есть в обоих множествах, большие t:" << std::endl;
+	for (int n : FSET)
+		std::cout << n << " ";
+	std::cout << std::endl;
+}
+
 int main() {
 	setlocale(LC_ALL, "Russian");
 
@@ -38,24 +55,13 @@ int main() {
 	std::cout << "Введите числа в множество B:" << std :: endl;
 	set_input(setB, N);
 
-	std::set<int> IntersectionSet = numbers_in_both_sets(setA, setB, N);
-
 	int t;
 	std::cout << "Введите t:" << std::endl;
 	std::cin >> t;
 
-	std::set<int> FSET{};
-	for(const int n : IntersectionSet)
-	{
-		if (n > t)
-		{
-			FSET.insert(n);
-		}
-	}
+	values_more_t(setA, setB, N, t);
 
-	for (int n : FSET)
-		std::cout << n << " ";
-	std::cout << std::endl;
+	system("pause");
 
 	return 0;
 }
