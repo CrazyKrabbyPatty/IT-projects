@@ -23,22 +23,25 @@ std::set<int> numbers_in_both_sets(std::set<int> SET1, std::set<int> SET2, int s
 }
 
 int main() {
+	setlocale(LC_ALL, "Russian");
+
+	std::cout << "Введите размер множеств:" << std::endl;
 	int N;
 	std::cin >> N;
 
 	std::set<int> setA{};
 	std::set<int> setB{};
 
-	std::cout << "Введите числа в множество A" << std::endl;
+	std::cout << "Введите числа в множество A:" << std::endl;
 	set_input(setA, N);
 
-	std::cout << "Введите числа в множество B" << std :: endl;
+	std::cout << "Введите числа в множество B:" << std :: endl;
 	set_input(setB, N);
 
 	std::set<int> IntersectionSet = numbers_in_both_sets(setA, setB, N);
 
 	int t;
-	std::cout << "Введите t" << std::endl;
+	std::cout << "Введите t:" << std::endl;
 	std::cin >> t;
 
 	std::set<int> FSET{};
@@ -51,6 +54,8 @@ int main() {
 	}
 
 	for (int n : FSET)
-		std::cout << n;
+		std::cout << n << " ";
+	std::cout << std::endl;
+
 	return 0;
 }
